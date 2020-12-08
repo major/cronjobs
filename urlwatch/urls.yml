@@ -1,4 +1,10 @@
 kind: url
+name: thetagang
+url: https://www.patreon.com/api/campaigns/2953663
+filter:
+  - format-json
+---
+kind: url
 name: W5WUT
 url: https://wireless2.fcc.gov/UlsApp/UlsSearch/license.jsp?licKey=3980566&printable
 filter:
