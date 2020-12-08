@@ -16,6 +16,9 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install packages
+        run: sudo apt-get -y install jq
+
       - name: Get pip cache dir
         id: pip-cache
         run: |
