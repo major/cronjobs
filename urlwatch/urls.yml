@@ -4,6 +4,7 @@ name: thetagang
 url: https://www.patreon.com/api/campaigns/2953663
 filter:
   - format-json
+  - sort
 ---
 # Check for changes to my amateur radio license.
 kind: url
@@ -11,3 +12,15 @@ name: W5WUT
 url: https://wireless2.fcc.gov/UlsApp/UlsSearch/license.jsp?licKey=3980566&printable
 filter:
   - element-by-tag: body
+---
+# Check for updates to fdRanker.
+kind: url
+name: fdranker
+url: https://api.swaggystocks.com/api/stockLabs/fdRanker/
+filter:
+  - format-json
+  - sort
+headers:
+  authority: "api.swaggystocks.com"
+  origin: "https://www.swaggystocks.com"
+  referer: https://www.swaggystocks.com/dashboard/stocklabs/fd-ranker
