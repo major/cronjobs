@@ -26,7 +26,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: Install urlwatch
-        run: pip install urlwatch
+        run: pip install -U urlwatch
 
       - name: Add Mailgun API key
         run: sed -i "s/MAILGUN_API_KEY/${MAILGUN_API_KEY}/" urlwatch/urlwatch.yml
@@ -34,7 +34,7 @@ jobs:
       - name: Run urlwatch
         run: |
           urlwatch --config urlwatch/urlwatch.yml \
-            --urls urls.yaml --cache urlwatch.db
+            --urls urls.yml --cache urlwatch.db
 
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
