@@ -4,7 +4,6 @@ name: thetagang
 url: https://www.patreon.com/api/campaigns/2953663
 filter:
   - format-json
-  - sort
 ---
 # Check for changes to my amateur radio license.
 kind: url
@@ -19,7 +18,6 @@ name: fdranker
 url: https://api.swaggystocks.com/api/stockLabs/fdRanker/
 filter:
   - format-json
-  - sort
 headers:
   authority: "api.swaggystocks.com"
   origin: "https://www.swaggystocks.com"
