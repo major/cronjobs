@@ -30,6 +30,8 @@ jobs:
 
       - name: Add Mailgun API key
         run: sed -i "s/MAILGUN_API_KEY/${MAILGUN_API_KEY}/" urlwatch/urlwatch.yml
+        env:
+          MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
 
       - name: Run urlwatch
         run: |
