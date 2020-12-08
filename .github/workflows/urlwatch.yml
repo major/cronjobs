@@ -1,0 +1,31 @@
+name: Run urlwatch
+on:
+  # schedule:
+    # - cron: '0 * * * *'
+  push: []
+
+jobs:
+  urlwatch:
+    container:
+      image: "python:latest"
+    steps:
+      - name: Checkout configuration
+        uses: actions/checkout@v2
+
+      - name: Install urlwatch
+        run: pip install urlwatch
+
+      - name: Populate configuration file with secrets
+        run: envsubst < urlwatch/urlwatch.yml > urlwatch-complete.yml
+
+      - name: Run urlwatch
+        run: |
+          urlwatch --config urlwatch/urlwatch-complete.yml \
+            --urls urls.yaml --cache urlwatch.db
+
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: last-urlwatch-database
+          path: urlwatch.db
+          retention-days: 1
