@@ -21,9 +21,12 @@ jobs:
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-urlwatch
-          restore-keys: |
-            ${{ runner.os }}-pip-
-            ${{ runner.os }}-
+
+      - name: Cache urlwatch database
+        uses: actions/cache@v2
+        with:
+          path: urlwatch.db
+          key: ${{ runner.os }}-urlwatchdb
 
       - name: Install urlwatch
         run: pip install -U urlwatch
@@ -33,19 +36,7 @@ jobs:
         env:
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
 
-      - name: Download a single artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: last-urlwatch-database
-
       - name: Run urlwatch
         run: |
           urlwatch --config urlwatch/urlwatch.yml \
             --urls urlwatch/urls.yml --cache urlwatch.db
-
-      - name: Archive production artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: last-urlwatch-database
-          path: urlwatch.db
-          retention-days: 1
