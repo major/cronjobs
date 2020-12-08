@@ -33,6 +33,11 @@ jobs:
         env:
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
 
+      - name: Download a single artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: last-urlwatch-database
+
       - name: Run urlwatch
         run: |
           urlwatch --config urlwatch/urlwatch.yml \
