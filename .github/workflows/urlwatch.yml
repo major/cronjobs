@@ -16,17 +16,18 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Cache pip
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-urlwatch
+      - name: Get pip cache dir
+        id: pip-cache
+        run: |
+          echo "::set-output name=dir::$(pip cache dir)"
 
-      - name: Cache urlwatch database
+      - name: pip cache
         uses: actions/cache@v2
         with:
-          path: urlwatch.db
-          key: ${{ runner.os }}-urlwatchdb
+          path: ${{ steps.pip-cache.outputs.dir }}
+          key: ${{ runner.os }}-pip-urlwatch
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
       - name: Install urlwatch
         run: pip install -U urlwatch
@@ -35,6 +36,12 @@ jobs:
         run: sed -i "s/MAILGUN_API_KEY/${MAILGUN_API_KEY}/" urlwatch/urlwatch.yml
         env:
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+
+      - name: Cache urlwatch database
+        uses: actions/cache@v2
+        with:
+          path: urlwatch.db
+          key: ${{ runner.os }}-urlwatchdb
 
       - name: Run urlwatch
         run: |
