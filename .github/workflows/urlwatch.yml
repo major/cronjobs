@@ -7,11 +7,23 @@ on:
 jobs:
   urlwatch:
     runs-on: ubuntu-20.04
-    container:
-      image: "python:latest"
     steps:
       - name: Checkout configuration
         uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Cache pip
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-urlwatch
+          restore-keys: |
+            ${{ runner.os }}-pip-
+            ${{ runner.os }}-
 
       - name: Install urlwatch
         run: pip install urlwatch
