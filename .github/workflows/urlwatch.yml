@@ -33,7 +33,7 @@ jobs:
 
       - name: Run urlwatch
         run: |
-          urlwatch --config urlwatch/urlwatch-complete.yml \
+          urlwatch --config urlwatch/urlwatch.yml \
             --urls urls.yaml --cache urlwatch.db
 
       - name: Archive production artifacts
