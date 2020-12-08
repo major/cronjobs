@@ -44,6 +44,4 @@ jobs:
           key: ${{ runner.os }}-urlwatchdb
 
       - name: Run urlwatch
-        run: |
-          urlwatch --config urlwatch/urlwatch.yml \
-            --urls urlwatch/urls.yml --cache urlwatch.db
+        run: urlwatch -v --cache urlwatch.db --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
