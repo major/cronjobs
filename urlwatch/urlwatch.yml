@@ -30,7 +30,7 @@ report:
     event: ''
     key: ''
   mailgun:
-    api_key: '${MAILGUN_API_KEY}'
+    api_key: 'MAILGUN_API_KEY'
     domain: 'mg.major.io'
     enabled: true
     from_mail: 'urlwatch@mhtx.net'

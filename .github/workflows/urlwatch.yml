@@ -28,8 +28,8 @@ jobs:
       - name: Install urlwatch
         run: pip install urlwatch
 
-      - name: Populate configuration file with secrets
-        run: envsubst < urlwatch/urlwatch.yml > urlwatch-complete.yml
+      - name: Add Mailgun API key
+        run: sed -i "s/MAILGUN_API_KEY/${MAILGUN_API_KEY}/" urlwatch/urlwatch.yml
 
       - name: Run urlwatch
         run: |
