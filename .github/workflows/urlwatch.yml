@@ -40,8 +40,8 @@ jobs:
       - name: Cache urlwatch database
         uses: actions/cache@v2
         with:
-          path: urlwatch.db
+          path: "~/.cache/urlwatch/cache.db"
           key: ${{ runner.os }}-urlwatchdb
 
       - name: Run urlwatch
-        run: urlwatch -v --cache urlwatch.db --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
+        run: urlwatch -v --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
