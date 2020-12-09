@@ -30,7 +30,9 @@ jobs:
             ${{ runner.os }}-pip-
 
       - name: Install urlwatch
-        run: pip install -U urlwatch
+        run: |
+          pip install -U wheel
+          pip install -U urlwatch
 
       - name: Add Mailgun API key
         run: sed -i "s/MAILGUN_API_KEY/${MAILGUN_API_KEY}/" urlwatch/urlwatch.yml
