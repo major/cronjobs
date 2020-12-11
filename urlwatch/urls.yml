@@ -1,6 +1,6 @@
 # Hunt for cheaper Theta Gang patreon tiers.
 kind: url
-name: thetagang
+name: thetagang_patreon
 url: https://www.patreon.com/api/campaigns/2953663
 filter:
   - format-json
@@ -23,3 +23,10 @@ headers:
   authority: "api.swaggystocks.com"
   origin: "https://www.swaggystocks.com"
   referer: https://www.swaggystocks.com/dashboard/stocklabs/fd-ranker
+---
+# Get the latest trades from thetagang.com
+kind: url
+name: thetagang_trades
+url: https://api.thetagang.com/thots
+filter:
+  - format-json
