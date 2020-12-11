@@ -46,4 +46,6 @@ jobs:
           key: urlwatchdb
 
       - name: Run urlwatch
-        run: urlwatch --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
+        run: |
+          urlwatch --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
+          sync
