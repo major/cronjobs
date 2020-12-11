@@ -37,6 +37,9 @@ jobs:
 
       - name: Run urlwatch
         run: |
-          gunzip ~/.cache/urlwatch/urlwatch.db.gz
+          #!/bin/bash
+          if [ -f ~/.cache/urlwatch/urlwatch.db.gz ]; then
+            gunzip ~/.cache/urlwatch/urlwatch.db.gz
+          fi
           urlwatch --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
           gzip ~/.cache/urlwatch/urlwatch.db
