@@ -26,6 +26,7 @@ jobs:
 
       - name: Install urlwatch
         run: |
+          pip install -U pip
           pip install -U wheel
           pip install -U urlwatch
 
@@ -35,4 +36,6 @@ jobs:
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
 
       - name: Run urlwatch
-        run: urlwatch --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
+        run: |
+          urlwatch --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
+          sqlite3 ~/.cache/urlwatch/cache.db 'VACUUM'
