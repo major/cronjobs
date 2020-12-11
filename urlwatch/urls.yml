@@ -1,9 +1,3 @@
-# Hunt for cheaper Theta Gang patreon tiers.
-kind: url
-name: thetagang.patreon
-url: https://www.patreon.com/api/campaigns/2953663
-filter:
-  - format-json
 ---
 # Check for changes to my amateur radio license.
 kind: url
@@ -11,6 +5,13 @@ name: W5WUT
 url: https://wireless2.fcc.gov/UlsApp/UlsSearch/license.jsp?licKey=3980566&printable
 filter:
   - element-by-tag: body
+---
+# Hunt for cheaper Theta Gang patreon tiers.
+kind: url
+name: thetagang.patreon
+url: https://www.patreon.com/api/campaigns/2953663
+filter:
+  - format-json
 ---
 # Check for updates to fdRanker.
 kind: url
