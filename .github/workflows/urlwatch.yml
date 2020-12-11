@@ -22,7 +22,7 @@ jobs:
           path: |
             ~/.cache/pip
             ~/.cache/urlwatch/
-          key: urlwatch
+          key: urlwatch-${{ hashFiles("~/.cache/urlwatch/cache.db") }}
 
       - name: Install urlwatch
         run: |
@@ -36,10 +36,4 @@ jobs:
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
 
       - name: Run urlwatch
-        run: |
-          #!/bin/bash
-          if [ -f ~/.cache/urlwatch/cache.db.gz ]; then
-            gunzip -v ~/.cache/urlwatch/cache.db.gz
-          fi
-          urlwatch --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
-          gzip -v ~/.cache/urlwatch/cache.db
+        run: urlwatch --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
