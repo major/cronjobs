@@ -16,18 +16,13 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Get pip cache dir
-        id: pip-cache
-        run: |
-          echo "::set-output name=dir::$(pip cache dir)"
-
-      - name: pip cache
+      - name: Cache artifacts
         uses: actions/cache@v2
         with:
-          path: ${{ steps.pip-cache.outputs.dir }}
-          key: ${{ runner.os }}-pip-urlwatch
-          restore-keys: |
-            ${{ runner.os }}-pip-
+          path: |
+            ~/.cache/pip
+            ~/.cache/urlwatch/cache.db
+          key: urlwatch
 
       - name: Install urlwatch
         run: |
@@ -39,13 +34,5 @@ jobs:
         env:
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
 
-      - name: Cache urlwatch database
-        uses: actions/cache@v2
-        with:
-          path: "~/.cache/urlwatch/cache.db"
-          key: urlwatchdb
-
       - name: Run urlwatch
-        run: |
-          urlwatch --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
-          sync
+        run: urlwatch --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
