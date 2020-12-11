@@ -1,6 +1,6 @@
 # Hunt for cheaper Theta Gang patreon tiers.
 kind: url
-name: thetagang_patreon
+name: thetagang.patreon
 url: https://www.patreon.com/api/campaigns/2953663
 filter:
   - format-json
