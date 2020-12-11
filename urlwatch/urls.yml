@@ -14,16 +14,16 @@ filter:
   - format-json
 ---
 # Check for updates to fdRanker.
-kind: url
-name: fdranker
-url: https://api.swaggystocks.com/api/stockLabs/fdRanker/
-filter:
-  - format-json
-  - shellpipe: "jq -M -S '.|=sort_by(.ticker)'"
-headers:
-  authority: "api.swaggystocks.com"
-  origin: "https://www.swaggystocks.com"
-  referer: https://www.swaggystocks.com/dashboard/stocklabs/fd-ranker
+#kind: url
+#name: fdranker
+#url: https://api.swaggystocks.com/api/stockLabs/fdRanker/
+#filter:
+#  - format-json
+#  - shellpipe: "jq -M -S '.|=sort_by(.ticker)'"
+#headers:
+#  authority: "api.swaggystocks.com"
+#  origin: "https://www.swaggystocks.com"
+#  referer: https://www.swaggystocks.com/dashboard/stocklabs/fd-ranker
 ---
 # Get my own trades
 kind: url
@@ -39,10 +39,10 @@ url: https://api.thetagang.com/trades?username=jzn
 filter:
   - format-json
 ---
-# Get the latest trades from thetagang.com
+# Watch ipeeaye
 kind: url
-name: thetagang.trades
-url: https://api.thetagang.com/trades
+name: thetagang.ipeeaye
+url: https://api.thetagang.com/trades?username=ipeeaye
 filter:
   - format-json
 ---
@@ -50,12 +50,5 @@ filter:
 kind: url
 name: thetagang.trends
 url: https://api.thetagang.com/trends
-filter:
-  - format-json
----
-# Get the latest thots from thetagang.com
-kind: url
-name: thetagang.thots
-url: https://api.thetagang.com/thots
 filter:
   - format-json
