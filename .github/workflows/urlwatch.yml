@@ -22,11 +22,10 @@ jobs:
           path: |
             ~/.cache/pip
             ~/.cache/urlwatch/
-          key: urlwatch-${{ hashFiles("~/.cache/urlwatch/cache.db") }}
+          key: urlwatch-${{ hashFiles("/home/runner/.cache/urlwatch/cache.db") }}
 
       - name: Install urlwatch
         run: |
-          pip install -U pip
           pip install -U wheel
           pip install -U urlwatch
 
