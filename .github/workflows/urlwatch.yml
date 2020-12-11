@@ -37,5 +37,6 @@ jobs:
 
       - name: Run urlwatch
         run: |
+          md5sum ~/.cache/urlwatch/cache.db
           urlwatch --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
-          sqlite3 ~/.cache/urlwatch/cache.db 'VACUUM'
+          md5sum ~/.cache/urlwatch/cache.db
