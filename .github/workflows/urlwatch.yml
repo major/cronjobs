@@ -36,7 +36,7 @@ jobs:
         run: |
           #!/bin/bash
           mkdir -p ~/.cache/urlwatch
-          s3cmd cp s3://${AWS_BUCKET}/cache.db ~/.cache/urlwatch/
+          s3cmd get s3://${AWS_BUCKET}/cache.db ~/.cache/urlwatch/
           urlwatch --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
           s3cmd cp ~/.cache/urlwatch/cache.db s3://${AWS_BUCKET}/cache.db
         env:
