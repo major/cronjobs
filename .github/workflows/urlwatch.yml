@@ -43,7 +43,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: "~/.cache/urlwatch/cache.db"
-          key: ${{ runner.os }}-urlwatchdb
+          key: urlwatchdb
 
       - name: Run urlwatch
-        run: urlwatch -v --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml --gc-cache
+        run: urlwatch -v --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
