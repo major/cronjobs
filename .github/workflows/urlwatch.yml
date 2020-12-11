@@ -16,13 +16,20 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Ensure cache.db exists
+        run: |
+          #!/bin/bash
+          if [ ! -f cache.db ]; then
+            sqlite3 cache.db "CREATE TABLE doot(ID INT PRIMARY KEY NOT NULL);"
+          fi
+
       - name: Cache artifacts
         uses: actions/cache@v2
         with:
           path: |
             ~/.cache/pip
             cache.db
-          key: urlwatch-${{ hashFiles('**/cache.db') }}
+          key: urlwatch-${{ hashFiles('cache.db') }}
 
       - name: Install urlwatch
         run: |
