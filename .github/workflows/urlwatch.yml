@@ -39,7 +39,7 @@ jobs:
         run: |
           #!/bin/bash
           if [ -f ~/.cache/urlwatch/cache.db.gz ]; then
-            gunzip ~/.cache/urlwatch/cache.db.gz
+            gunzip -v ~/.cache/urlwatch/cache.db.gz
           fi
           urlwatch --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
-          gzip ~/.cache/urlwatch/cache.db
+          gzip -v ~/.cache/urlwatch/cache.db
