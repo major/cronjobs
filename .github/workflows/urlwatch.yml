@@ -36,7 +36,7 @@ jobs:
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
 
       - name: Run urlwatch
-        run:
+        run: |
           #!/bin/bash
           mkdir -p ~/.cache/urlwatch
           s3cmd cp s3://${AWS_BUCKET}/cache.db ~/.cache/urlwatch/
