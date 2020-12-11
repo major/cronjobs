@@ -19,7 +19,7 @@ name: fdranker
 url: https://api.swaggystocks.com/api/stockLabs/fdRanker/
 filter:
   - format-json
-  - shellpipe: "jq -M -S '.|=sort_by(.iv_precent)'"
+  - shellpipe: "jq -M -S '.|=sort_by(.ticker)'"
 headers:
   authority: "api.swaggystocks.com"
   origin: "https://www.swaggystocks.com"
