@@ -21,8 +21,8 @@ jobs:
         with:
           path: |
             ~/.cache/pip
-            ~/.cache/urlwatch/
-          key: urlwatch-${{ hashFiles("/home/runner/.cache/urlwatch/cache.db") }}
+            cache.db
+          key: urlwatch-${{ hashFiles("cache.db") }}
 
       - name: Install urlwatch
         run: |
@@ -35,4 +35,4 @@ jobs:
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
 
       - name: Run urlwatch
-        run: urlwatch --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
+        run: urlwatch --cache ./cache.db --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
