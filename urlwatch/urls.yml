@@ -52,3 +52,4 @@ name: thetagang.trends
 url: https://api.thetagang.com/trends
 filter:
   - format-json
+  - shellpipe: "jq -S '.data.trends|=sort|.data.trends'"
