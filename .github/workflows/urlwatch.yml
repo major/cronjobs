@@ -21,7 +21,7 @@ jobs:
         with:
           path: |
             ~/.cache/pip
-            ~/.cache/urlwatch/cache.db
+            ~/.cache/urlwatch/
           key: urlwatch
 
       - name: Install urlwatch
@@ -37,6 +37,6 @@ jobs:
 
       - name: Run urlwatch
         run: |
-          md5sum ~/.cache/urlwatch/cache.db
+          gunzip ~/.cache/urlwatch/urlwatch.db.gz
           urlwatch --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
-          md5sum ~/.cache/urlwatch/cache.db
+          gzip ~/.cache/urlwatch/urlwatch.db
