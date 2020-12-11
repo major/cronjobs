@@ -27,7 +27,7 @@ headers:
 ---
 # Get my own trades
 kind: url
-name: thetagang.mhayden
+name: thetagang.mine
 url: https://api.thetagang.com/trades?username=mhayden
 filter:
   - format-json
