@@ -53,10 +53,3 @@ url: https://api.thetagang.com/trends
 filter:
   - format-json
   - shellpipe: "jq -S '.data.trends|=sort|.data.trends'"
----
-# I'd like a nice UTSA hoodie. 🧥
-kind: url
-name: utsa.hoodie
-url: "https://utsagear.merchorders.com/utsa_roadrunners__sweatshirts__mens__UTSA_Adidas_Navy_Team_Issue_Hoodie__Roadrunner_Head__6-33-zr10hzb"
-filter:
-  - element-by-tag: body
