@@ -24,6 +24,7 @@ jobs:
 
       - name: Install urlwatch
         run: |
+          pip install -U pip
           pip install -U wheel
           pip install -U s3cmd urlwatch
 
