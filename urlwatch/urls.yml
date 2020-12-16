@@ -46,6 +46,27 @@ url: https://api.thetagang.com/trades?username=ipeeaye
 filter:
   - format-json
 ---
+# Watch whheaton
+kind: url
+name: thetagang.whheaton
+url: https://api.thetagang.com/trades?username=whheaton
+filter:
+  - format-json
+---
+# Watch gjwilson
+kind: url
+name: thetagang.gjwilson
+url: https://api.thetagang.com/trades?username=gjwilson
+filter:
+  - format-json
+---
+# Watch tomhomas
+kind: url
+name: thetagang.tomhomas
+url: https://api.thetagang.com/trades?username=tomhomas
+filter:
+  - format-json
+---
 # Get the latest trends from thetagang.com
 kind: url
 name: thetagang.trends
