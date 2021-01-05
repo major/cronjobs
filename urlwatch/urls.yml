@@ -67,6 +67,13 @@ url: https://api.thetagang.com/trades?username=tomhomas
 filter:
   - format-json
 ---
+# Watch DoughGoat
+kind: url
+name: thetagang.doughgoat
+url: https://api.thetagang.com/trades?username=doughgoat
+filter:
+  - format-json
+---
 # Get the latest trends from thetagang.com
 kind: url
 name: thetagang.trends
