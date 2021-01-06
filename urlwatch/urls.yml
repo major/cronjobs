@@ -1,10 +1,10 @@
----
+#---
 # Check for changes to my amateur radio license.
-kind: url
-name: W5WUT
-url: https://wireless2.fcc.gov/UlsApp/UlsSearch/license.jsp?licKey=3980566&printable
-filter:
-  - element-by-tag: body
+#kind: url
+#name: W5WUT
+#url: https://wireless2.fcc.gov/UlsApp/UlsSearch/license.jsp?licKey=3980566&printable
+#filter:
+#  - element-by-tag: body
 ---
 # Hunt for cheaper Theta Gang patreon tiers.
 kind: url
