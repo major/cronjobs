@@ -67,10 +67,10 @@ url: https://api.thetagang.com/trades?username=tomhomas
 filter:
   - format-json
 ---
-# Watch DoughGoat
+# Watch banadushi
 kind: url
-name: thetagang.doughgoat
-url: https://api.thetagang.com/trades?username=doughgoat
+name: thetagang.banadushi
+url: https://api.thetagang.com/trades?username=banadushi
 filter:
   - format-json
 ---
