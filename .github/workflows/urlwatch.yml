@@ -4,7 +4,7 @@ on:
     - cron: '12,27,42,57 * * * *'
   push:
     branches:
-      - master
+      - main
 
 jobs:
   urlwatch:
