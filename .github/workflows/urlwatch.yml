@@ -39,8 +39,8 @@ jobs:
         run: |
           #!/bin/bash
           mkdir -p ~/.cache/urlwatch
-          git fetch origin cache-db --depth 1
-          git checkout cache-db cache.db.gz
+          git fetch --all
+          git checkout origin/cache-db cache.db.gz
           mv cache.db.gz ~/.cache/urlwatch
           gunzip -v ~/.cache/urlwatch/cache.db.gz
 
