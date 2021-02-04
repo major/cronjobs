@@ -85,7 +85,7 @@ filter:
 # 🤷
 kind: url
 name: bexar.recent.arrests
-url: https://api.thetagang.com/trends
+url: https://centralmagistrate.bexar.org/Home/GetRecentArrests
 filter:
   - format-json
   - shellpipe: "jq -S '.data|=sort_by(.name)'"
