@@ -7,11 +7,11 @@
 #  - element-by-tag: body
 ---
 # Hunt for cheaper Theta Gang patreon tiers.
-kind: url
-name: thetagang.patreon
-url: https://www.patreon.com/api/campaigns/2953663
-filter:
-  - format-json
+#kind: url
+#name: thetagang.patreon
+#url: https://www.patreon.com/api/campaigns/2953663
+#filter:
+#  - format-json
 ---
 # Check for updates to fdRanker.
 #kind: url
@@ -81,3 +81,11 @@ url: https://api.thetagang.com/trends
 filter:
   - format-json
   - shellpipe: "jq -S '.data.trends|=sort|.data.trends'"
+---
+# 🤷
+kind: url
+name: bexar.recent.arrests
+url: https://api.thetagang.com/trends
+filter:
+  - format-json
+  - shellpipe: "jq -S '.data|=sort_by(.name)'"
