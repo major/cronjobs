@@ -2,7 +2,9 @@ name: Run urlwatch
 on:
   schedule:
     - cron: '12,27,42,57 * * * *'
-  push: []
+  push:
+    branches:
+      - master
 
 jobs:
   urlwatch:
@@ -33,23 +35,21 @@ jobs:
         env:
           MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
 
-      - name: Run urlwatch
+      - name: Restore cache database
         run: |
           #!/bin/bash
           mkdir -p ~/.cache/urlwatch
-          s3cmd get s3://${AWS_BUCKET}/cache.db ~/.cache/urlwatch/
-          urlwatch --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
-          s3cmd put ~/.cache/urlwatch/cache.db s3://${AWS_BUCKET}/
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: us-east-2
-          AWS_BUCKET: mhayden-cronjobs
+          git checkout cache-db cache.db.gz
+          mv cache.db.gz ~/.cache/urlwatch
+          gunzip -v ~/.cache/urlwatch/cache.db.gz
+
+      - name: Run urlwatch
+        run: urlwatch --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
 
       - name: Compress and move urlwatch cache db
         run: |
           mkdir -vp database/
-          gzip -vc ~/.cache/urlwatch/cache.db > database/cache.db.gzip
+          gzip -vc ~/.cache/urlwatch/cache.db > database/cache.db.gz
 
       - name: Store cache database
         uses: s0/git-publish-subdir-action@develop
