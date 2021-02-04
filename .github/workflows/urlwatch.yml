@@ -49,9 +49,9 @@ jobs:
       - name: Compress and move urlwatch cache db
         run: |
           mkdir -vp database/
-          xz -z ~/.cache/urlwatch/cache.db > database/cache.db.xz
+          gzip -vc ~/.cache/urlwatch/cache.db > database/cache.db.gzip
 
-      - name: Store
+      - name: Store cache database
         uses: s0/git-publish-subdir-action@develop
         env:
           REPO: self
