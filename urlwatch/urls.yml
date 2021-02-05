@@ -13,67 +13,6 @@
 #filter:
 #  - format-json
 ---
-# Check for updates to fdRanker.
-#kind: url
-#name: fdranker
-#url: https://api.swaggystocks.com/api/stockLabs/fdRanker/
-#filter:
-#  - format-json
-#  - shellpipe: "jq -M -S '.|=sort_by(.ticker)'"
-#headers:
-#  authority: "api.swaggystocks.com"
-#  origin: "https://www.swaggystocks.com"
-#  referer: https://www.swaggystocks.com/dashboard/stocklabs/fd-ranker
----
-# Get my own trades
-kind: url
-name: thetagang.mine
-url: https://api.thetagang.com/trades?username=mhayden
-filter:
-  - format-json
----
-# Watch jzn
-kind: url
-name: thetagang.jzn
-url: https://api.thetagang.com/trades?username=jzn
-filter:
-  - format-json
----
-# Watch ipeeaye
-kind: url
-name: thetagang.ipeeaye
-url: https://api.thetagang.com/trades?username=ipeeaye
-filter:
-  - format-json
----
-# Watch whheaton
-kind: url
-name: thetagang.whheaton
-url: https://api.thetagang.com/trades?username=whheaton
-filter:
-  - format-json
----
-# Watch gjwilson
-kind: url
-name: thetagang.gjwilson
-url: https://api.thetagang.com/trades?username=gjwilson
-filter:
-  - format-json
----
-# Watch tomhomas
-kind: url
-name: thetagang.tomhomas
-url: https://api.thetagang.com/trades?username=tomhomas
-filter:
-  - format-json
----
-# Watch banadushi
-kind: url
-name: thetagang.banadushi
-url: https://api.thetagang.com/trades?username=banadushi
-filter:
-  - format-json
----
 # Get the latest trends from thetagang.com
 kind: url
 name: thetagang.trends
@@ -81,11 +20,3 @@ url: https://api.thetagang.com/trends
 filter:
   - format-json
   - shellpipe: "jq -S '.data.trends|=sort|.data.trends'"
----
-# 🤷
-kind: url
-name: bexar.recent.arrests
-url: https://centralmagistrate.bexar.org/Home/GetRecentArrests
-filter:
-  - format-json
-  - shellpipe: "jq -S '.data|=sort_by(.name)'"
