@@ -11,7 +11,11 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Dump event data
-        run: echo ${{ github.event }}
+        env:
+          GITHUB_WEBHOOK_PAYLOAD: ${{ github.event }} 
+        run: |
+          #!/bin/bash
+          echo $GITHUB_WEBHOOK_PAYLOAD
         
       - name: Checkout configuration
         uses: actions/checkout@v2
