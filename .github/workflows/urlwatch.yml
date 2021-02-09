@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Dump event data
+        shell: bash
         env:
           GITHUB_WEBHOOK_PAYLOAD: ${{ github.event }} 
         run: |
