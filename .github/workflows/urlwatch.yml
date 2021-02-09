@@ -10,6 +10,9 @@ jobs:
   urlwatch:
     runs-on: ubuntu-20.04
     steps:
+      - name: Dump event data
+        run: echo ${{ github.event }}
+        
       - name: Checkout configuration
         uses: actions/checkout@v2
 
