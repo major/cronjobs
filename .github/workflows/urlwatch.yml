@@ -11,9 +11,11 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Dump event data
+        env:
+          GITHUB_WEBHOOK: ${{ toJSON(github.event) }} 
         run: |
           #!/bin/bash
-          echo ${{ github.event }} 
+          echo $GITHUB_WEBHOOK
         
       - name: Checkout configuration
         uses: actions/checkout@v2
