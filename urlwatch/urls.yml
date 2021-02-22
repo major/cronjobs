@@ -1,17 +1,3 @@
-#---
-# Check for changes to my amateur radio license.
-#kind: url
-#name: W5WUT
-#url: https://wireless2.fcc.gov/UlsApp/UlsSearch/license.jsp?licKey=3980566&printable
-#filter:
-#  - element-by-tag: body
----
-# Hunt for cheaper Theta Gang patreon tiers.
-#kind: url
-#name: thetagang.patreon
-#url: https://www.patreon.com/api/campaigns/2953663
-#filter:
-#  - format-json
 ---
 # Get the latest trends from thetagang.com
 kind: url
@@ -23,7 +9,7 @@ filter:
 ---
 # Check icanhazip.com A records
 kind: url
-name: icanhazip.dns.a
+name: icanhazip.com.dns.a
 url: "https://dns.google/resolve?name=icanhazip.com&type=A"
 filter:
   - format-json
@@ -31,8 +17,24 @@ filter:
 ---
 # Check icanhazip.com AAAA records
 kind: url
-name: icanhazip.dns.aaaa
+name: icanhazip.com.dns.aaaa
 url: "https://dns.google/resolve?name=icanhazip.com&type=AAAA"
+filter:
+  - format-json
+  - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
+---
+# Check major.io A records
+kind: url
+name: major.io.dns.a
+url: "https://dns.google/resolve?name=major.io&type=A"
+filter:
+  - format-json
+  - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
+---
+# Check major.io AAAA records
+kind: url
+name: major.io.dns.aaaa
+url: "https://dns.google/resolve?name=major.io&type=AAAA"
 filter:
   - format-json
   - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
