@@ -20,3 +20,19 @@ url: https://api.thetagang.com/trends
 filter:
   - format-json
   - shellpipe: "jq -S '.data.trends|=sort|.data.trends'"
+---
+# Check icanhazip.com A records
+kind: url
+name: icanhazip.dns.a
+url: "https://dns.google/resolve?name=icanhazip.com&type=A"
+filter:
+  - format-json
+  - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
+---
+# Check icanhazip.com AAAA records
+kind: url
+name: icanhazip.dns.aaaa
+url: "https://dns.google/resolve?name=icanhazip.com&type=AAAA"
+filter:
+  - format-json
+  - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
