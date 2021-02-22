@@ -52,7 +52,7 @@ jobs:
           gunzip -v ~/.cache/urlwatch/cache.db.gz
 
       - name: Run urlwatch
-        run: urlwatch --gc-cache --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
+        run: urlwatch --verbose --gc-cache --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
 
       - name: Compress and move urlwatch cache db
         run: |
