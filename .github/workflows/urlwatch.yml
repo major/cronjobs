@@ -47,9 +47,12 @@ jobs:
           #!/bin/bash
           mkdir -p ~/.cache/urlwatch
           git fetch --all
-          git checkout origin/cache-db cache.db.gz
-          mv cache.db.gz ~/.cache/urlwatch
-          gunzip -v ~/.cache/urlwatch/cache.db.gz
+          if git checkout origin/cache-db cache.db.gz; then
+            mv cache.db.gz ~/.cache/urlwatch
+            gunzip -v ~/.cache/urlwatch/cache.db.gz
+          else
+            sqlite3 ~/.cache/urlwatch/cache.db <<< ".tables"
+          fi
 
       - name: Run urlwatch
         run: urlwatch --verbose --gc-cache --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
