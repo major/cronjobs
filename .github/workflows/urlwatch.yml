@@ -33,9 +33,8 @@ jobs:
 
       - name: Install urlwatch
         run: |
-          pip install -U pip
-          pip install -U wheel
-          pip install -U https://github.com/thp/urlwatch/archive/master.zip
+          pip install -U pip wheel
+          pip install -U urlwatch
 
       - name: Add Mailgun API key
         run: sed -i "s/MAILGUN_API_KEY/${MAILGUN_API_KEY}/" urlwatch/urlwatch.yml
