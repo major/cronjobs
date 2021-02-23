@@ -45,8 +45,6 @@ jobs:
       - name: Restore cache database
         run: |
           #!/bin/bash
-          set -euxo pipefail
-          
           mkdir -p ~/.cache/urlwatch
           git fetch --all
           if git checkout origin/cache-db cache.db.gz; then
@@ -57,7 +55,7 @@ jobs:
           fi
 
       - name: Run urlwatch
-        run: urlwatch --verbose --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
+        run: urlwatch --config urlwatch/urlwatch.yml --urls urlwatch/urls.yml
 
       - name: Compress and move urlwatch cache db
         run: |
