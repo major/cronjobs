@@ -1,7 +1,7 @@
 name: Run urlwatch
 on:
   schedule:
-    - cron: '12,27,42,57 * * * *'
+    - cron: '04,14,24,34,44,54 0-4,12-23 * * *'
   push:
     branches:
       - main
