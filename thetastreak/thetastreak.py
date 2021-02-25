@@ -4,19 +4,21 @@ import time
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
 
 TG_USERNAME = os.environ.get("TG_USERNAME")
 TG_PASSWORD = os.environ.get("TG_PASSWORD")
 
 driver = webdriver.Chrome()
 driver.get("https://thetagang.com/login")
-assert "THETA GANG" in driver.title
 
-elem = driver.find_element_by_id("Username")
+time.sleep(5)
+
+elem = driver.find_element_by_xpath('//*[@id="Username"]')
 elem.clear()
 elem.send_keys(TG_USERNAME)
 
-elem = driver.find_element_by_id("Password")
+elem = driver.find_element_by_xpath('//*[@id="Password"]')
 elem.clear()
 elem.send_keys(TG_PASSWORD)
 
