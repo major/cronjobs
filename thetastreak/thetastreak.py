@@ -9,7 +9,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 TG_USERNAME = os.environ.get("TG_USERNAME")
 TG_PASSWORD = os.environ.get("TG_PASSWORD")
 
-driver = webdriver.Chrome()
+chrome_options = Options()
+chrome_options.add_argument("headless")
+driver = webdriver.Chrome(chrome_options=chrome_options)
 driver.get("https://thetagang.com/login")
 
 time.sleep(5)
