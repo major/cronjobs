@@ -11,13 +11,13 @@ jobs:
       - name: Checkout configuration
         uses: actions/checkout@v2
 
-      - name: Setup chromedriver
-        uses: nanasess/setup-chromedriver@master
+      # - name: Setup chromedriver
+      #   uses: nanasess/setup-chromedriver@master
 
-      - name: Setup chrome
-        run: |
-          export DISPLAY=:99
-          chromedriver --url-base=/wd/hub &
+      # - name: Setup chrome
+      #   run: |
+      #     export DISPLAY=:99
+      #     chromedriver --url-base=/wd/hub &
 
       - name: Setup Python
         uses: actions/setup-python@v2
