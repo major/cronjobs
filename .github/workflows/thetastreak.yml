@@ -1,0 +1,46 @@
+name: Run thetastreak
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  thetastreak:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout configuration
+        uses: actions/checkout@v2
+
+      - name: Setup chromedriver
+        uses: nanasess/setup-chromedriver@master
+        # with:
+        #   # Optional: do not specify to match Chrome's version
+        #   chromedriver-version: '88.0.4324.96'
+      # - name: Setup chrome
+      #   run: |
+      #     export DISPLAY=:99
+      #     chromedriver --url-base=/wd/hub &
+      #     sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install requirements
+        run: |
+          pip install -U pip wheel
+          pip install -U selenium
+
+      - name: Run thetastreak
+        env:
+          TG_USERNAME: ${{ secrets.TG_USERNAME }}
+          TG_PASSWORD: ${{ secrets.TG_PASSWORD }}
+        run: thetastreak/thetastreak.py
