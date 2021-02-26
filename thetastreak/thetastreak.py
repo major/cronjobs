@@ -25,5 +25,12 @@ elem.clear()
 elem.send_keys(TG_PASSWORD)
 
 elem.send_keys(Keys.RETURN)
+
+time.sleep(5)
+
 assert TG_USERNAME in driver.page_source
+driver.refresh()
+
+time.sleep(1)
+
 driver.close()
