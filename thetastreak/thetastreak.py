@@ -7,6 +7,8 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 
+logging.basicConfig(level=logging.INFO)
+
 TG_USERNAME = os.environ.get("TG_USERNAME")
 TG_PASSWORD = os.environ.get("TG_PASSWORD")
 
