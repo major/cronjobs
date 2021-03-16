@@ -38,3 +38,7 @@ url: "https://dns.google/resolve?name=major.io&type=AAAA"
 filter:
   - format-json
   - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
+---
+kind: url
+name: td.restricted.trading
+url: https://www.tdameritrade.com/td-ameritrade-trading-restrictions-stocks.page
