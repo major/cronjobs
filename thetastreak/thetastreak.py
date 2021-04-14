@@ -25,7 +25,7 @@ TG_USERNAME = os.environ.get("TG_USERNAME")
 TG_PASSWORD = os.environ.get("TG_PASSWORD")
 
 chrome_options = Options()
-# chrome_options.add_argument("headless")
+chrome_options.add_argument("headless")
 driver = webdriver.Chrome(options=chrome_options)
 
 logging.info("Loading the site...")
