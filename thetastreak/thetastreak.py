@@ -57,7 +57,7 @@ driver.refresh()
 wait_for_load(driver)
 
 premium_div = driver.find_element_by_xpath(
-    '//*[@id="root"]/div/div/div/div[3]/div[1]/div[1]/div[3]/div/div[4]/div[2]'
+    '/html/body/div/div/div/div/div[3]/div[1]/div[1]/div[3]/div/div[7]/div[2]'
 )
 print(premium_div.text)
 
