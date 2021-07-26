@@ -7,22 +7,6 @@ filter:
   - format-json
   - shellpipe: "jq -S '.data.trends|=sort|.data.trends'"
 ---
-# Check icanhazip.com A records
-kind: url
-name: icanhazip.com.dns.a
-url: "https://dns.google/resolve?name=icanhazip.com&type=A"
-filter:
-  - format-json
-  - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
----
-# Check icanhazip.com AAAA records
-kind: url
-name: icanhazip.com.dns.aaaa
-url: "https://dns.google/resolve?name=icanhazip.com&type=AAAA"
-filter:
-  - format-json
-  - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
----
 # Check major.io A records
 kind: url
 name: major.io.dns.a
