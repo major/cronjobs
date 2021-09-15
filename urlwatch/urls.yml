@@ -22,3 +22,8 @@ url: "https://dns.google/resolve?name=major.io&type=AAAA"
 filter:
   - format-json
   - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
+---
+# Monitor Red Hat certs
+kind: url
+name: redhat.certs
+url: "https://rhtapps.redhat.com/verify?certId=110-268-455"
