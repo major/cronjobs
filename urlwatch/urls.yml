@@ -1,11 +1,11 @@
----
+#---
 # Get the latest trends from thetagang.com
-kind: url
-name: thetagang.trends
-url: https://api.thetagang.com/trends
-filter:
-  - format-json
-  - shellpipe: "jq -S '.data.trends|=sort|.data.trends'"
+#kind: url
+#name: thetagang.trends
+#url: https://api.thetagang.com/trends
+#filter:
+#  - format-json
+#  - shellpipe: "jq -S '.data.trends|=sort|.data.trends'"
 ---
 # Check major.io A records
 kind: url
