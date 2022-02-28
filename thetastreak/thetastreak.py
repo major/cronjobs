@@ -1,65 +1,59 @@
 #!/usr/bin/env python
-import logging
 import os
-import time
 
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-
-
-def wait_for_load(driver):
-    """Wait for the page to be fully loaded."""
-    time.sleep(5)
-    WebDriverWait(driver=driver, timeout=10).until(
-        lambda x: x.execute_script(
-            "return document.readyState === 'complete'"
-        )
-    )
-
-
-logging.basicConfig(level=logging.INFO)
+from playwright.sync_api import Playwright, sync_playwright
 
 TG_USERNAME = os.environ.get("TG_USERNAME")
 TG_PASSWORD = os.environ.get("TG_PASSWORD")
 
-chrome_options = Options()
-chrome_options.add_argument("headless")
-driver = webdriver.Chrome(options=chrome_options)
 
-logging.info("Loading the site...")
-driver.get("https://thetagang.com/login")
+def run(playwright: Playwright) -> None:
+    browser = playwright.chromium.launch(headless=True)
+    context = browser.new_context()
 
-wait_for_load(driver)
+    # Open new page
+    page = context.new_page()
 
-# Clear the modal.
-driver.refresh()
+    # Go to https://thetagang.com/
+    page.goto("https://thetagang.com/")
 
-wait_for_load(driver)
+    # Click text=Login
+    page.locator("text=Login").click()
+    # assert page.url == "https://thetagang.com/login"
 
-elem = driver.find_element_by_xpath('//*[@id="Username"]')
-elem.clear()
-elem.send_keys(TG_USERNAME)
+    # Click [placeholder="username"]
+    page.locator('[placeholder="username"]').click()
 
-elem = driver.find_element_by_xpath('//*[@id="Password"]')
-elem.clear()
-elem.send_keys(TG_PASSWORD)
+    # Fill [placeholder="username"]
+    page.locator('[placeholder="username"]').fill(TG_USERNAME)
 
-logging.info("Submitting login...")
-elem.send_keys(Keys.ENTER)
+    # Press Tab
+    page.locator('[placeholder="username"]').press("Tab")
 
-wait_for_load(driver)
+    # Fill [placeholder="password"]
+    page.locator('[placeholder="password"]').fill(TG_PASSWORD)
 
-logging.info("Refresh the page...")
-driver.refresh()
+    # Click text=Sign In
+    # with page.expect_navigation(url="https://thetagang.com/"):
+    with page.expect_navigation():
+        page.locator("text=Sign In").click()
 
-wait_for_load(driver)
+    # Click text=mhayden >> nth=1
+    page.locator("text=mhayden").nth(1).click()
+    # assert page.url == "https://thetagang.com/mhayden"
 
-premium_div = driver.find_element_by_xpath(
-    '/html/body/div/div/div/div/div[3]/div[1]/div[1]/div[3]/div/div[7]/div[2]'
-)
-print(premium_div.text)
+    # Click text=Open Trades
+    # with page.expect_navigation(url="https://thetagang.com/mhayden"):
+    with page.expect_navigation():
+        page.locator("text=Open Trades").click()
 
-driver.close()
-logging.info("Done! 🎉")
+    # Close page
+    page.close()
+
+    # ---------------------
+    context.close()
+    browser.close()
+
+
+with sync_playwright() as playwright:
+    run(playwright)
