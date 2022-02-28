@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+"""Keep the theta streak alive! 🔥"""
 import os
 
 from playwright.sync_api import Playwright, sync_playwright
@@ -8,18 +9,20 @@ TG_PASSWORD = os.environ.get("TG_PASSWORD")
 
 
 def run(playwright: Playwright) -> None:
-    browser = playwright.chromium.launch(headless=True)
+    browser = playwright.chromium.launch(headless=False)
     context = browser.new_context()
 
     # Open new page
     page = context.new_page()
 
-    # Go to https://thetagang.com/
-    page.goto("https://thetagang.com/")
+    # Go to https://thetagang.com/login
+    page.goto("https://thetagang.com/login")
 
-    # Click text=Login
-    page.locator("text=Login").click()
-    # assert page.url == "https://thetagang.com/login"
+    # Click text=RELEASE NOTES
+    page.locator("text=RELEASE NOTES").click()
+
+    # Press Escape
+    page.locator('div[role="dialog"]').press("Escape")
 
     # Click [placeholder="username"]
     page.locator('[placeholder="username"]').click()
@@ -27,11 +30,14 @@ def run(playwright: Playwright) -> None:
     # Fill [placeholder="username"]
     page.locator('[placeholder="username"]').fill(TG_USERNAME)
 
-    # Press Tab
-    page.locator('[placeholder="username"]').press("Tab")
+    # Click [placeholder="password"]
+    page.locator('[placeholder="password"]').click()
 
     # Fill [placeholder="password"]
     page.locator('[placeholder="password"]').fill(TG_PASSWORD)
+
+    # Click text=Sign In
+    page.locator("text=Sign In").click()
 
     # Click text=Sign In
     # with page.expect_navigation(url="https://thetagang.com/"):
@@ -43,9 +49,11 @@ def run(playwright: Playwright) -> None:
     # assert page.url == "https://thetagang.com/mhayden"
 
     # Click text=Open Trades
-    # with page.expect_navigation(url="https://thetagang.com/mhayden"):
-    with page.expect_navigation():
-        page.locator("text=Open Trades").click()
+    page.locator("text=Open Trades").click()
+
+    # Click img
+    page.locator("img").click()
+    # assert page.url == "https://thetagang.com/"
 
     # Close page
     page.close()
