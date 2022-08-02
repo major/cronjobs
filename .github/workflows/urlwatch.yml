@@ -2,7 +2,9 @@ name: Run urlwatch
 on:
   schedule:
     - cron: '12,27,42,57 * * * *'
-  workflow_dispatch: []
+  push:
+    branches:
+      - main
 
 jobs:
   urlwatch:
