@@ -18,12 +18,6 @@ def run(playwright: Playwright) -> None:
     # Go to https://thetagang.com/login
     page.goto("https://thetagang.com/login")
 
-    # Click text=RELEASE NOTES
-    page.locator("text=RELEASE NOTES").click()
-
-    # Press Escape
-    page.locator('div[role="dialog"]').press("Escape")
-
     # Click [placeholder="username"]
     page.locator('[placeholder="username"]').click()
 
@@ -42,7 +36,7 @@ def run(playwright: Playwright) -> None:
     # Click text=Sign In
     # with page.expect_navigation(url="https://thetagang.com/"):
     with page.expect_navigation():
-        page.locator("text=Sign In").click()
+        page.locator("text=Login").click()
 
     # Click text=mhayden >> nth=1
     page.locator("text=mhayden").nth(1).click()
