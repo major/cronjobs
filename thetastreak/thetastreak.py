@@ -31,7 +31,7 @@ def run(playwright: Playwright) -> None:
     page.locator('[placeholder="password"]').fill(TG_PASSWORD)
 
     # Click text=Sign In
-    page.locator("text=Sign In").click()
+    page.locator("text=Login").click()
 
     # Click text=Sign In
     # with page.expect_navigation(url="https://thetagang.com/"):
