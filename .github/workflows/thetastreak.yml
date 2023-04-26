@@ -1,7 +1,7 @@
 name: Run thetastreak
 on:
-#  schedule:
-#    - cron: "5 */6 * * *"
+  schedule:
+    - cron: "5 */6 * * *"
   push:
     branches:
       - main
