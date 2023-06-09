@@ -24,10 +24,10 @@ jobs:
       - name: Install urlwatch
         run: pipx install urlwatch
 
-      - name: Add Mailgun API key
-        run: sed -i "s/MAILGUN_API_KEY/${MAILGUN_API_KEY}/" urlwatch/urlwatch.yml
+      - name: Add Fastmail Password
+        run: sed -i "s/FASTMAIL_PASSWORD/${FASTMAIL_PASSWORD}/" urlwatch/urlwatch.yml
         env:
-          MAILGUN_API_KEY: ${{ secrets.MAILGUN_API_KEY }}
+          FASTMAIL_PASSWORD: ${{ secrets.FASTMAIL_PASSWORD }}
 
       - name: Restore cache database
         run: |
