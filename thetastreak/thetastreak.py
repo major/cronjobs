@@ -9,7 +9,7 @@ TG_PASSWORD = os.environ.get("TG_PASSWORD")
 
 
 def run(playwright: Playwright) -> None:
-    browser = playwright.chromium.launch(headless=True)
+    browser = playwright.chromium.launch(headless=False)
     context = browser.new_context()
 
     # Open new page
@@ -34,7 +34,7 @@ def run(playwright: Playwright) -> None:
     page.get_by_role("button", name="Login").click()
 
     # Click text=mhayden >> nth=1
-    page.locator("text=mhayden").nth(1).click()
+    page.locator(f"text={TG_USERNAME}").nth(1).click()
 
     # Click text=Open Trades
     page.locator("text=Open Trades").click()
