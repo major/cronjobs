@@ -12,3 +12,17 @@ url: "https://dns.google/resolve?name=he708y0f0sr.sn.mynetname.net&type=AAAA"
 filter:
   - format-json
   - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
+---
+kind: url
+name: blog.dns.a
+url: "https://dns.google/resolve?name=major.io&type=A"
+filter:
+  - format-json
+  - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
+---
+kind: url
+name: blog.dns.aaaa
+url: "https://dns.google/resolve?name=major.io&type=AAAA"
+filter:
+  - format-json
+  - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
