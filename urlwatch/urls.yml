@@ -1,21 +1,14 @@
 ---
-# Check major.io A records
 kind: url
-name: major.io.dns.a
-url: "https://dns.google/resolve?name=major.io&type=A"
+name: home.dns.a
+url: "https://dns.google/resolve?name=he708y0f0sr.sn.mynetname.net&type=A"
 filter:
   - format-json
   - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
 ---
-# Check major.io AAAA records
 kind: url
-name: major.io.dns.aaaa
-url: "https://dns.google/resolve?name=major.io&type=AAAA"
+name: home.dns.aaaa
+url: "https://dns.google/resolve?name=he708y0f0sr.sn.mynetname.net&type=AAAA"
 filter:
   - format-json
   - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
----
-# Check for new azure-sdk-for-python packages
-kind: url
-name: azure.python.sdk
-url: "https://raw.githubusercontent.com/Azure/azure-sdk/main/_data/releases/latest/python-packages.csv"
