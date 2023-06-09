@@ -24,18 +24,10 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.8"
-
-      - name: Cache python dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: urlwatch-pip
+          python-version: "3.11"
 
       - name: Install urlwatch
-        run: |
-          pip install -U pip wheel
-          pip install -U urlwatch
+        run: pipx install urlwatch
 
       - name: Add Mailgun API key
         run: sed -i "s/MAILGUN_API_KEY/${MAILGUN_API_KEY}/" urlwatch/urlwatch.yml
