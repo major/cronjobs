@@ -16,7 +16,7 @@ jobs:
 
       - name: Install requirements
         run: |
-          pipx install playwright
+          pip install playwright
           playwright install chromium
 
       - name: Run thetastreak
