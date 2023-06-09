@@ -10,9 +10,9 @@ job_defaults:
 report:
   email:
     enabled: true
-    from: "urlwatch@mhtx.net"
+    from: "URL Watch <urlwatch@mhtx.net>"
     to: "major@mhtx.net"
-    html: true
+    html: false
     method: smtp
     sendmail:
       path: sendmail
