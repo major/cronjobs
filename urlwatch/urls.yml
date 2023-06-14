@@ -33,10 +33,3 @@ url: "https://dns.google/resolve?name=thetanerd.com&type=A"
 filter:
   - format-json
   - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
----
-kind: url
-name: thetanerd.dns.aaaa
-url: "https://dns.google/resolve?name=thetanerd.com&type=AAAA"
-filter:
-  - format-json
-  - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
