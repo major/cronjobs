@@ -33,11 +33,9 @@ def run(playwright: Playwright) -> None:
     # Click login button
     page.get_by_role("button", name="Login").click()
 
-    # Click text=mhayden >> nth=1
-    page.locator(f"text={TG_USERNAME}").nth(1).click()
-
-    # Click text=Open Trades
-    page.locator("text=Open Trades").click()
+    page.get_by_text("Profile").click()
+    page.get_by_role("button", name="Open Trades").click()
+    page.get_by_text("Notifications").click()
 
     # Close page
     page.close()
