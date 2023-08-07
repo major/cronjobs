@@ -33,9 +33,8 @@ def run(playwright: Playwright) -> None:
     # Click login button
     page.get_by_role("button", name="Login").click()
 
-    page.get_by_text("Profile").click()
-    page.get_by_role("button", name="Open Trades").click()
-    page.get_by_text("Notifications").click()
+    page.goto(f"https://thetagang.com/{TG_USERNAME}")
+    page.reload()
 
     # Close page
     page.close()
