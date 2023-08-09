@@ -9,7 +9,7 @@ on:
 
 jobs:
   urlwatch:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - name: Dump event data
         env:
