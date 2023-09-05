@@ -19,7 +19,7 @@ jobs:
           echo $GITHUB_WEBHOOK
 
       - name: Checkout configuration
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install urlwatch
         run: pipx install urlwatch
