@@ -34,6 +34,9 @@ def run(playwright: Playwright) -> None:
     page.get_by_role("button", name="Login").click()
 
     page.goto(f"https://thetagang.com/{TG_USERNAME}")
+    page.goto(f"https://thetagang.com/joonie")
+    page.goto(f"https://thetagang.com/slomotion")
+    page.goto(f"https://thetagang.com/tracker")
     page.reload()
 
     # Close page
