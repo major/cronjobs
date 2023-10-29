@@ -9,7 +9,7 @@ TG_PASSWORD = os.environ.get("TG_PASSWORD")
 
 
 def run(playwright: Playwright) -> None:
-    browser = playwright.chromium.launch(headless=True)
+    browser = playwright.firefox.launch(headless=True)
     context = browser.new_context()
 
     # Open new page
