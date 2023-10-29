@@ -18,7 +18,6 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.12"
-          cache: poetry
 
       - name: Cache playwright browsers
         uses: actions/cache@v3
