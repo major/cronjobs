@@ -14,10 +14,26 @@ jobs:
       - name: Checkout configuration
         uses: actions/checkout@v4
 
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+          cache: poetry
+
+      - name: Cache playwright browsers
+        uses: actions/cache@v3
+        id: playwright-cache
+        with:
+          path: |
+            ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright
+
       - name: Install requirements
-        run: |
-          pip install playwright
-          playwright install chromium
+        run: pip install playwright
+
+      - name: Install playwright browsers
+        run: playwright install firefox
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Run thetastreak
         env:
