@@ -11,38 +11,20 @@ TG_PASSWORD = os.environ.get("TG_PASSWORD")
 def run(playwright: Playwright) -> None:
     browser = playwright.firefox.launch(headless=True)
     context = browser.new_context()
-
-    # Open new page
     page = context.new_page()
 
-    # Go to https://thetagang.com/login
     page.goto("https://thetagang.com/login")
+    page.get_by_placeholder("username", exact=True).click()
+    page.get_by_placeholder("username", exact=True).fill(TG_USERNAME)
+    page.get_by_placeholder("username", exact=True).press("Tab")
+    page.get_by_placeholder("password").fill(TG_PASSWORD)
+    page.get_by_placeholder("password").press("Enter")
 
-    # Click [placeholder="username"]
-    page.locator('[placeholder="username"]').click()
-
-    # Fill [placeholder="username"]
-    page.locator('[placeholder="username"]').fill(TG_USERNAME)
-
-    # Click [placeholder="password"]
-    page.locator('[placeholder="password"]').click()
-
-    # Fill [placeholder="password"]
-    page.locator('[placeholder="password"]').fill(TG_PASSWORD)
-
-    # Click login button
-    page.get_by_role("button", name="Login").click()
-
-    page.goto(f"https://thetagang.com/{TG_USERNAME}")
-    page.goto(f"https://thetagang.com/joonie")
-    page.goto(f"https://thetagang.com/slomotion")
-    page.goto(f"https://thetagang.com/tracker")
+    page.locator('[id="C"]').get_by_text("Profile").click()
+    page.get_by_text("Notifications").click()
     page.reload()
 
-    # Close page
     page.close()
-
-    # ---------------------
     context.close()
     browser.close()
 
