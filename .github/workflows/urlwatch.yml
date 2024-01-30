@@ -23,7 +23,9 @@ jobs:
           python-version: '3.12' 
 
       - name: Install urlwatch
-        run: pipx install urlwatch
+        run: |
+          pip install -U pipx
+          pipx install urlwatch
 
       - name: Add Fastmail Password
         run: sed -i "s/FASTMAIL_PASSWORD/${FASTMAIL_PASSWORD}/" urlwatch/urlwatch.yml
