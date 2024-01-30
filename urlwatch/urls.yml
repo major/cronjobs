@@ -1,35 +1,20 @@
+# ---
+# kind: url
+# name: home.dns.a
+# url: "https://dns.google/resolve?name=he708y0f0sr.sn.mynetname.net&type=A"
+# filter:
+#   - format-json
+#   - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
+# ---
+# kind: url
+# name: home.dns.aaaa
+# url: "https://dns.google/resolve?name=he708y0f0sr.sn.mynetname.net&type=AAAA"
+# filter:
+#   - format-json
+#   - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
 ---
 kind: url
-name: home.dns.a
-url: "https://dns.google/resolve?name=he708y0f0sr.sn.mynetname.net&type=A"
+name: centos.development.appstream
+url: "https://composes.stream.centos.org/development/latest-CentOS-Stream/compose/AppStream/x86_64/os/Packages/"
 filter:
-  - format-json
-  - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
----
-kind: url
-name: home.dns.aaaa
-url: "https://dns.google/resolve?name=he708y0f0sr.sn.mynetname.net&type=AAAA"
-filter:
-  - format-json
-  - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
----
-kind: url
-name: blog.dns.a
-url: "https://dns.google/resolve?name=major.io&type=A"
-filter:
-  - format-json
-  - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
----
-kind: url
-name: blog.dns.aaaa
-url: "https://dns.google/resolve?name=major.io&type=AAAA"
-filter:
-  - format-json
-  - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
----
-kind: url
-name: thetanerd.dns.a
-url: "https://dns.google/resolve?name=thetanerd.com&type=A"
-filter:
-  - format-json
-  - shellpipe: "jq -rS '.Answer|=sort|.Answer[].data'"
+  - shellpipe: "html2text | grep rpm | awk '{print $NF}'"
