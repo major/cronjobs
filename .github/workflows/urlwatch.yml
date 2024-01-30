@@ -26,7 +26,7 @@ jobs:
       - name: Install urlwatch
         run: |
           pip install -U pip
-          pip install urlwatch
+          pip install -r requirements.txt
 
       - name: Add Fastmail Password
         run: sed -i "s/FASTMAIL_PASSWORD/${FASTMAIL_PASSWORD}/" urlwatch/urlwatch.yml
