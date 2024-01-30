@@ -1,25 +1,26 @@
 name: Run urlwatch
 on:
-  #schedule:
-  #  - cron: '*/15 * * * *'
-  # push:
-  #   branches:
-  #     - main
+  schedule:
+   - cron: '54 * * * *'
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
   urlwatch:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Dump event data
-        env:
-          GITHUB_WEBHOOK: ${{ toJSON(github.event) }}
-        run: |
-          #!/bin/bash
-          echo $GITHUB_WEBHOOK
+      - name: Install html2text
+        run: sudo apt -y install html2text
 
       - name: Checkout configuration
         uses: actions/checkout@v4
+
+      - name: Install Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12' 
 
       - name: Install urlwatch
         run: pipx install urlwatch
