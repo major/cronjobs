@@ -24,7 +24,7 @@ jobs:
 
       - name: Install urlwatch
         run: |
-          pip install -U pipx
+          pip install -U pip pipx
           pipx install urlwatch
 
       - name: Add Fastmail Password
