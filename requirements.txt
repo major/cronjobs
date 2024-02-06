@@ -1,2 +1,2 @@
-playwright==1.41.1
+playwright==1.41.2
 urlwatch==2.28
