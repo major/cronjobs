@@ -20,7 +20,7 @@ def run(playwright: Playwright) -> None:
     page.get_by_placeholder("password").fill(TG_PASSWORD)
     page.get_by_placeholder("password").press("Enter")
 
-    page.locator("#header i").click()
+    #page.locator("#header i").click()
     page.locator('[id="C"]').get_by_text("The Lab 🧪").click()
     page.get_by_text("Home").click()
     page.get_by_text("major").click()
