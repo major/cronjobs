@@ -21,7 +21,7 @@ def run(playwright: Playwright) -> None:
 
     page.get_by_role("button", name="Login").click()
     page.get_by_text("major, the Ember").click()
-    page.locator("[id=\"C\"]").get_by_text("The Lab 🧪").click()
+    page.locator("[id=\"C\"]").get_by_text("Profile").click()
     page.reload()
     page.close()
 
