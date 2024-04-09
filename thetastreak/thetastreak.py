@@ -19,7 +19,6 @@ def run(playwright: Playwright) -> None:
     page.get_by_placeholder("username", exact=True).press("Tab")
     page.get_by_placeholder("password").fill(TG_PASSWORD)
 
-    page.locator("span").click()
     page.locator("#header svg").click()
     page.locator("#header").get_by_text("Profile").click()
     page.get_by_text("major, the Ember").click()
