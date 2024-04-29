@@ -17,10 +17,10 @@ kind: url
 name: centos.development.baseos
 url: "https://composes.stream.centos.org/development/latest-CentOS-Stream/compose/BaseOS/x86_64/os/Packages/"
 filter:
-  - shellpipe: "html2text | grep rpm | awk '{print $NF}'"
+  - shellpipe: "html2text | grep rpm | awk '{print $1}'"
 ---
 kind: url
 name: centos.development.appstream
 url: "https://composes.stream.centos.org/development/latest-CentOS-Stream/compose/AppStream/x86_64/os/Packages/"
 filter:
-  - shellpipe: "html2text | grep rpm | awk '{print $NF}'"
+  - shellpipe: "html2text | grep rpm | awk '{print $1}'"
