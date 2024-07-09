@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 """Keep the theta streak alive! 🔥"""
+
 import os
+from time import sleep
 
 from playwright.sync_api import Playwright, sync_playwright
 
@@ -20,9 +22,10 @@ def run(playwright: Playwright) -> None:
     page.get_by_placeholder("password").fill(TG_PASSWORD)
     page.get_by_placeholder("password").press("Enter")
 
-    page.locator("#header svg").click()
-    page.locator("#header").get_by_text("Profile").click()
-    page.get_by_text("major, the Ember").click()
+    links = ["Profile", "Leaderboard", "Achievements"]
+    for link in links:
+        page.locator('[id="C"]').get_by_text(link).click()
+        sleep(5)
 
     page.reload()
     page.close()
