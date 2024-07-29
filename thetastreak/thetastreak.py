@@ -22,7 +22,7 @@ def run(playwright: Playwright) -> None:
     page.get_by_placeholder("password").fill(TG_PASSWORD)
     page.get_by_placeholder("password").press("Enter")
 
-    links = ["Profile", "Leaderboard", "Achievements"]
+    links = ["Leaderboard", "Achievements", "Notifications"]
     for link in links:
         page.locator('[id="C"]').get_by_text(link).click()
         sleep(5)
