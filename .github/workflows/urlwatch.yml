@@ -15,7 +15,7 @@ jobs:
         run: sudo apt -y install html2text
 
       - name: Checkout configuration
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Install Python
         uses: actions/setup-python@v6
